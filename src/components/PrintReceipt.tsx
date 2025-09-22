@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Script from 'next/script'; // For loading external scripts
 import { generateReceiptXml } from '@/lib/generateReceiptXml'; // Adjust path as needed
+import { getPrinterServiceUrl } from '@/lib/printerConfig';
 
 export default function PrintReceipt() {
   const [status, setStatus] = useState('Ready');
@@ -32,9 +33,8 @@ export default function PrintReceipt() {
     const xml = generateReceiptXml(title, subtitle, qrData, instructions);
     console.log('Generated XML:', xml);
 
-    const ip = '192.168.50.244';
     // Printer address (replace with your printer's IP and Device ID)
-    const address = `http://${ip}/cgi-bin/epos/service.cgi?devid=local_printer&timeout=30000`; // Timeout in ms
+    const address = getPrinterServiceUrl(30000); // Timeout in ms
 
     // Create ePOS-Print object
     const epos = new epson.ePOSPrint(address);
@@ -123,8 +123,7 @@ export default function PrintReceipt() {
     const xmlRequest = builder.toString();
     console.log('Builder Generated XML:', xmlRequest);
 
-    const ip = '192.168.50.244';
-    const address = `http://${ip}/cgi-bin/epos/service.cgi?devid=local_printer&timeout=30000`;
+    const address = getPrinterServiceUrl(30000);
 
     // Create ePOS-Print object
     const epos = new epson.ePOSPrint(address);
@@ -211,8 +210,7 @@ export default function PrintReceipt() {
       const xmlRequest = builder.toString();
       console.log('Image Print XML:', xmlRequest);
 
-      const ip = '192.168.50.244';
-      const address = `http://${ip}/cgi-bin/epos/service.cgi?devid=local_printer&timeout=30000`;
+      const address = getPrinterServiceUrl(30000);
 
       // Create ePOS-Print object
       const epos = new epson.ePOSPrint(address);

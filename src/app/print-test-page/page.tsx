@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import PrintReceipt from '@/components/PrintReceipt';
+import { getPrinterIpAddress } from '@/lib/printerConfig';
 
 export default function PrintTestPage() {
   const [printerIP, setPrinterIP] = useState('192.168.50.244');
@@ -14,6 +15,8 @@ export default function PrintTestPage() {
     setIsClient(true);
     setEposSdkLoaded(typeof (window as any).epson !== 'undefined');
     setUserAgent(window.navigator.userAgent);
+    // Load printer IP from configuration
+    setPrinterIP(getPrinterIpAddress());
   }, []);
 
   return (

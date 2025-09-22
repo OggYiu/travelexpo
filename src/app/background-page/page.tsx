@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Script from 'next/script';
 import QueueElement from '@/components/QueueElement';
 import { database, ref, set, onValue, type DataSnapshot, type CompanyId } from '@/lib/firebase';
+import { getPrinterServiceUrl } from '@/lib/printerConfig';
 
 const ticketKeys = ['1', '2', '3', '4'];
 
@@ -148,8 +149,7 @@ export default function BackgroundPage() {
       const xmlRequest = builder.toString();
       // console.log('Image Print XML:', xmlRequest);
 
-      const ip = '192.168.50.244';
-      const address = `http://${ip}/cgi-bin/epos/service.cgi?devid=local_printer&timeout=30000`;
+      const address = getPrinterServiceUrl(30000);
 
       // Create ePOS-Print object
       const epos = new (window as any).epson.ePOSPrint(address);

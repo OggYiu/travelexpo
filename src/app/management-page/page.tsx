@@ -100,6 +100,13 @@ export default function ManagementPage() {
     }
   };
 
+  const handleResetClick = () => {
+    const confirmed = window.confirm('Are you sure you want to reset all queues? This action cannot be undone.');
+    if (confirmed) {
+      resetAllQueues();
+    }
+  };
+
 
   return (
     <>
@@ -165,7 +172,7 @@ export default function ManagementPage() {
           {/* Reset Button - Row 5 */}
           <div className="flex-1 flex items-center justify-center px-4" style={{ minHeight: 0, maxHeight: '20vh' }}>
             <button
-              onClick={resetAllQueues}
+              onClick={handleResetClick}
               className="px-16 py-4 bg-gray-600 text-white font-bold rounded-lg hover:bg-gray-700 transition-colors"
               style={{ 
                 fontFamily: 'Gothic, sans-serif',
