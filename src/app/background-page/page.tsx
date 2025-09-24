@@ -354,7 +354,7 @@ export default function BackgroundPage() {
         </div>
         
         {/* Print Status Display - Fixed position at bottom */}
-        <div className={`fixed bottom-4 left-4 px-4 py-2 rounded-lg font-mono text-sm z-20 ${
+        {/* <div className={`fixed bottom-4 left-4 px-4 py-2 rounded-lg font-mono text-sm z-20 ${
           isOnCooldown 
             ? 'bg-red-600 bg-opacity-90 text-white' 
             : 'bg-black bg-opacity-75 text-white'
@@ -371,7 +371,7 @@ export default function BackgroundPage() {
             C:{currentTicketNumbers.C.toString().padStart(3, '0')} 
             D:{currentTicketNumbers.D.toString().padStart(3, '0')}
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );
