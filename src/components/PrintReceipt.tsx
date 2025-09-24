@@ -190,7 +190,7 @@ export default function PrintReceipt() {
       builder.addText(ticketNumber + '\n\n');
 
       // 3. Print QR code (centered) - 50% bigger, using ID instead of ticket number
-      builder.addSymbol(`https://cayee-guru.vercel.app/${id.toLocaleLowerCase()}-page`, 
+      builder.addSymbol(`https://travelexpo-iota.vercel.app/${id.toLocaleLowerCase()}-page`, 
                        builder.SYMBOL_QRCODE_MODEL_2, 
                        builder.LEVEL_M, 
                        6, 6, 0); // 50% bigger QR code (4 * 1.5 = 6)
@@ -202,6 +202,28 @@ export default function PrintReceipt() {
         builder.addImage(secondImageContext, 0, 0, secondImageCanvas.width, secondImageCanvas.height, builder.COLOR_1, builder.MODE_MONO);
       }
 
+      // Add current date and time
+      builder.addText('\n');
+      builder.addTextAlign(builder.ALIGN_CENTER);
+      builder.addTextFont(builder.FONT_A);
+      builder.addTextSize(1, 1); // Normal size
+      builder.addTextStyle(false, false, false, builder.COLOR_1); // Normal style
+      
+      const currentDate = new Date();
+      const dateString = currentDate.toLocaleDateString('zh-TW', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+      });
+      const timeString = currentDate.toLocaleTimeString('zh-TW', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+      });
+      
+      builder.addText(`${dateString} ${timeString}\n`);
+      
       // Add feed and cut
       builder.addFeedLine(3);
       builder.addCut(builder.CUT_FEED);
