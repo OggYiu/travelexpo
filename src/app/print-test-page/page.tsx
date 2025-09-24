@@ -5,7 +5,7 @@ import PrintReceipt from '@/components/PrintReceipt';
 import { getPrinterIpAddress } from '@/lib/printerConfig';
 
 export default function PrintTestPage() {
-  const [printerIP, setPrinterIP] = useState('192.168.50.244');
+  const [printerIP, setPrinterIP] = useState('192.168.1.102');
   const [testMode, setTestMode] = useState(false);
   const [isClient, setIsClient] = useState(false);
   const [eposSdkLoaded, setEposSdkLoaded] = useState(false);

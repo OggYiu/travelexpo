@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 export default function SettingsPage() {
-  const [ipAddress, setIpAddress] = useState('192.168.50.244');
+  const [ipAddress, setIpAddress] = useState('192.168.1.102');
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
   const [saveStatus, setSaveStatus] = useState('');
@@ -58,8 +58,8 @@ export default function SettingsPage() {
 
   // Reset to default
   const handleReset = () => {
-    setIpAddress('192.168.50.244');
-    localStorage.setItem('printerIpAddress', '192.168.50.244');
+    setIpAddress('192.168.1.102');
+    localStorage.setItem('printerIpAddress', '192.168.1.102');
     setSaveStatus('Reset to default IP address');
     setTimeout(() => {
       setSaveStatus('');

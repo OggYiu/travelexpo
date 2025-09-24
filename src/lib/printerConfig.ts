@@ -3,7 +3,7 @@
  * Handles IP address storage and retrieval for the EPSON printer
  */
 
-const DEFAULT_IP = '192.168.50.244';
+const DEFAULT_IP = '192.168.1.102';
 const STORAGE_KEY = 'printerIpAddress';
 
 /**
