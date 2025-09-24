@@ -47,7 +47,7 @@ export function setPrinterIpAddress(ipAddress: string): boolean {
  */
 export function getPrinterServiceUrl(timeout: number = 30000): string {
   const ip = getPrinterIpAddress();
-  return `https://${ip}:8043/cgi-bin/epos/service.cgi?devid=local_printer&timeout=${timeout}`;
+  return `https://${ip}/cgi-bin/epos/service.cgi?devid=local_printer&timeout=${timeout}`;
 }
 
 /**
